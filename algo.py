@@ -19,10 +19,16 @@ class Matcher:
         self.personOne = personOne
         self.personTwo = personTwo
         self.commonQuestionsIndexes = self.findCommonQuestions()
-        personOneMatchPercent = self.calcPersonsMatchPercent(self.personOne)
-        personTwoMatchPercent = self.calcPersonsMatchPercent(self.personTwo)
-        self.overallMatchPercent = self.calcOverallMatchPercent(personOneMatchPercent,personTwoMatchPercent)
-    
+        #!= means is not equivalent to 
+        #the len function is built into python and gets the number of items in a list
+        if len(self.commonQuestionsIndexes) != 0: #confirms that the two people have atleast one question in common
+            personOneMatchPercent = self.calcPersonsMatchPercent(self.personOne)
+            personTwoMatchPercent = self.calcPersonsMatchPercent(self.personTwo)
+            self.overallMatchPercent = self.calcOverallMatchPercent(personOneMatchPercent,personTwoMatchPercent)
+        else:
+            self.overallMatchPercent =  0.0
+            #if their is no data that the two users share answers to than the system has no clue about whether they would be attracted to eachother, so set it to 0%
+
     def findCommonQuestions(self):
         CommonQuestionIndexes = []
         for IndexOne,QuestionOne in enumerate(self.personOne.QuestionsAnswered):
