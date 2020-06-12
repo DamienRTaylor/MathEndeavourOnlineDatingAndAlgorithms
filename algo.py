@@ -1,10 +1,11 @@
 class Person:
     def __init__(self, QuestionsAnswered):
-        self.QuestionsAnswered = [Question.ConvertListToQuestionClass(question) for question in QuestionsAnswered]
+        #More information would be here such as name, age, gender and all that stuff
+        self.QuestionsAnswered = [Question.ConvertListToQuestionClass(question) for question in QuestionsAnswered] #makes each question a question instance rather than a list
 
 class Question:
     def __init__(self,Name,Answer,DesiredAnswer,ImportanceWeighting):
-        self.Name = Name
+        self.Name = Name 
         self.Answer = Answer
         self.DesiredAnswer = DesiredAnswer
         self.ImportanceWeighting = ImportanceWeighting
@@ -69,4 +70,5 @@ personTwoQuestionsAnswered = [["Are you a tidy person?","yes","no",10],["Do you 
 personTwo = Person(personTwoQuestionsAnswered)
 
 matcher = Matcher(personOne,personTwo)
-print(matcher.overallMatchPercent)
+print(matcher.overallMatchPercent) 
+#outputs 91.10506463487546 which is the correct value
